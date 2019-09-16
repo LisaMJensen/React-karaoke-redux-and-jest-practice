@@ -1,5 +1,10 @@
 // LYRIC INFO
-const songLyricsArray = "Don't want to be a fool for you, Just another player in your game for two, You may hate me but it ain't no lie, Baby bye bye bye, Bye bye, I Don't want to make it tough, I just want to tell you that I've had enough, It might sound crazy but it ain't no lie, Baby bye bye bye".split(', ');
+const songList = {
+  1: "Don't want to be a fool for you, Just another player in your game for two, You may hate me but it ain't no lie, Baby bye bye bye, Bye bye, I Don't want to make it tough, I just want to tell you that I've had enough, It might sound crazy but it ain't no lie, Baby bye bye bye".split(', '),
+  2: "Twenty-five years and my life is still, Trying to get up that great big hill of hope, For a destination, I realized quickly when I knew I should, That the world was made up of this brotherhood of man, For whatever that means, And so I cry sometimes when I'm lying in bed, Just to get it all out what's in my head, And I, I am feeling a little peculiar, And so I wake in the morning and I step outside, And I take a deep breath and I get real high, and I Scream from the top of my lungs, What's going on?, And I say hey yeah yeah hey yeah yeah, I said hey what's going on?, And I say hey yeah yeah hey yeah yeah,I said hey what's going on?".split(', '),
+  3: "We're no strangers to love, You know the rules and so do I, A full commitment's what I'm thinking of, You wouldn't get this from any other guy, I just wanna tell you how I'm feeling, Gotta make you understand, Never gonna give you up, Never gonna let you down, Never gonna run around and desert you, Never gonna make you cry, Never gonna say goodbye, Never gonna tell a lie and hurt you".split(',')
+
+};
 
 // INITIAL REDUX STATE
 const initialState = {
@@ -18,7 +23,7 @@ const reducer = (state = initialState, action) => {
         arrayPosition: newArrayPosition,
       }
       return newState;
-      case 'RESTART_SONG':
+    case 'RESTART_SONG':
       newState = initialState;
       return newState;
     default:
@@ -67,9 +72,9 @@ window.onload = function () {
 const userClick = () => {
   const currentState = store.getState();
   if (currentState.arrayPosition === currentState.songLyricsArray.length - 1) {
-  store.dispatch({ type: 'RESTART_SONG' });
+    store.dispatch({ type: 'RESTART_SONG' });
   } else {
-    store.dispatch({ type: 'NEXT_LYRIC'});
+    store.dispatch({ type: 'NEXT_LYRIC' });
   }
   console.log(store.getState());
 }
