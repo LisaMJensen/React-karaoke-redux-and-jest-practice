@@ -25,7 +25,7 @@ const reducer = (state = initialState, action) => {
 // JEST TESTS + SETUP WILL GO HERE
 const { expect } = window;
 
-expect(reducer(initialState, {type: null})).toEqual(initialState);
+expect(reducer(initialState, { type: null })).toEqual(initialState);
 
 expect(reducer(initialState, { type: 'NEXT_LYRIC' })).toEqual({
   songLyricsArray: songLyricsArray,
@@ -47,11 +47,15 @@ const renderLyrics = () => {
   document.getElementById('lyrics').appendChild(renderedLine);
 }
 
-window.onload = function() {
+window.onload = function () {
   renderLyrics();
 }
 
 // CLICK LISTENER
 const userClick = () => {
-  console.log('click');
+  store.dispatch({ type: 'NEXT_LYRIC' });
+  console.log(store.getState());
 }
+
+//SUBSCRIBE TO REDUX STORE
+store.subscribe(renderLyrics);
